@@ -5,10 +5,10 @@ import java.util.List;
 public abstract class User {
 
     //Constants
-    public static byte STATUS_ACTIVE = 1;
-    public static byte STATUS_INACTIVE = 0;
-    public static byte TYPE_ADMIN = 0;
-    public static byte TYPE_REGULAR = 1;
+    public static final byte STATUS_ACTIVE = 1;
+    public static final byte STATUS_INACTIVE = 0;
+    public static final byte TYPE_ADMIN = 0;
+    public static final byte TYPE_REGULAR = 1;
 
     //Atributes
     private String firstName;
