@@ -1,10 +1,12 @@
 package edu.uvg.example;
 
+import java.io.Console;
 import java.util.Scanner;
 
 import edu.uvg.example.model.CalculadoraNormal;
 import edu.uvg.example.model.CalculadoraSumas;
 import edu.uvg.example.view.CalculadoraConsoleUI;
+import edu.uvg.example.view.CalculadoraWindowUI;
 
 /**
  * Hello world!
@@ -30,11 +32,11 @@ public class App
 		} break;
 		
 		case "2": {
-			
+			CalculadoraWindowUI windowUI = new CalculadoraWindowUI();
 		} break;
 		
 		default:{
-			
+			System.out.println("Opción no válida");
 		} break;
 		
 		}
