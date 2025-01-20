@@ -10,7 +10,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CalculadoraWindowUI extends JFrame {
+public class CalculadoraWindowUI extends JFrame implements IUserInterface{
 
     private JTextField numberField1;
     private JTextField numberField2;
@@ -26,9 +26,6 @@ public class CalculadoraWindowUI extends JFrame {
         setLayout(new GridLayout(5, 2, 10, 10));
 
         // Componentes
-        calculadoraInterna = new CalculadoraNormal();
-        //calculadoraInterna = new CalculadoraSumas();
-
         JLabel label1 = new JLabel("Número 1:");
         numberField1 = new JTextField();
 
@@ -66,7 +63,6 @@ public class CalculadoraWindowUI extends JFrame {
             }
         });
 
-        setVisible(true);
     }
 
     private void calculateResult() {
@@ -109,5 +105,13 @@ public class CalculadoraWindowUI extends JFrame {
         } catch (NumberFormatException ex) {
             resultLabel.setText("Error: Entrada no válida");
         }
+    }
+
+    @Override
+    public void ShowGUI(ICalculator calculator) {
+
+        calculadoraInterna = calculator;
+        setVisible(true);
+        
     }
 }

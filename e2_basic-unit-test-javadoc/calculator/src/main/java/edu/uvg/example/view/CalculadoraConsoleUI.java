@@ -8,14 +8,13 @@ import edu.uvg.example.model.ICalculator;
  * @author moises.alonso
  *
  */
-public class CalculadoraConsoleUI {
+public class CalculadoraConsoleUI implements IUserInterface{
 
 	private Scanner _in;
 	private ICalculator miCalculadora;
 	
-	public CalculadoraConsoleUI(Scanner _scanner, ICalculator _calculator) {
+	public CalculadoraConsoleUI(Scanner _scanner) {
 		_in = _scanner;
-		miCalculadora = _calculator;
 	}
 	
 	public void MenuPrincipal() {
@@ -112,5 +111,11 @@ public class CalculadoraConsoleUI {
 		int resultado = miCalculadora.mod(numero1, numero2);
 		
 		System.out.println("(" + numero1 + ") % (" + numero2 + ") = " + resultado);
+	}
+
+	@Override
+	public void ShowGUI(ICalculator calculator) {
+		miCalculadora = calculator;
+		this.MenuPrincipal();
 	}
 }
