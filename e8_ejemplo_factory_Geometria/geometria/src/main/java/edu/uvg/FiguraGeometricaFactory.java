@@ -14,6 +14,12 @@ public class FiguraGeometricaFactory {
 
             case "4":
                 return new Esfera();
+
+                case "5":
+                return new Triangulo();
+
+                case "6":
+                return new Cono();
         
             default:
                 return null;

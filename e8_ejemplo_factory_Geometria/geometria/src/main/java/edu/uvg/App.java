@@ -22,6 +22,8 @@ public class App
             System.out.println("2. Cubo");
             System.out.println("3. Circulo");
             System.out.println("4. Esfera");
+            System.out.println("5. Triangulo");
+            System.out.println("6. Cono");
             System.out.println("Escriba 'salir' para finalizar el programa");
 
             opt = in.nextLine();
