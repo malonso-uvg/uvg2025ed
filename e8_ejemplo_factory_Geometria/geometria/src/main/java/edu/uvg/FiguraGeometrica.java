@@ -13,6 +13,6 @@ public abstract class FiguraGeometrica {
         this.type = type;
     }
 
-    public void getData(Scanner in){};
+    abstract void getData(Scanner in);
 
 }
