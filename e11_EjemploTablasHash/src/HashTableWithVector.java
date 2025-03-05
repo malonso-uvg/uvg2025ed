@@ -14,11 +14,13 @@ public class HashTableWithVector<V> implements IHashTable<V>{
 	private IHashFunction<V> myFunction;
 	private Vector<ArrayList<V>> internalVector;
 	private int size;
+	private int count;
 	
 	public HashTableWithVector(IHashFunction<V> hashFunction, int size) {
 		setHashFunction(hashFunction);
 		this.size = size;
-		internalVector = new Vector<ArrayList<V>>();
+		this.count = 0;
+		internalVector = new Vector<ArrayList<V>>(size);
 		
 		for (int i = 0; i < size; i++) {
 			internalVector.add(new ArrayList<V>());
@@ -34,6 +36,7 @@ public class HashTableWithVector<V> implements IHashTable<V>{
 	public void insert(V value) {
 		int key = myFunction.getKey(value);
 		internalVector.get(key).add(value);
+		count++;
 	}
 
 	@Override
@@ -49,20 +52,17 @@ public class HashTableWithVector<V> implements IHashTable<V>{
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return count == 0;
 	}
 
 	@Override
 	public int count() {
-		// TODO Auto-generated method stub
-		return 0;
+		return count;
 	}
 
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		return size;
 	}
 
 }
