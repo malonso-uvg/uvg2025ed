@@ -33,7 +33,16 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements IBinaryTree
     }
 
     private void internalInsert(BinaryTreeNode<K, V> parent, BinaryTreeNode<K, V> newNode){
-        if (parent.get_key().compareTo(newNode.get_key()) > 0){ //parent es mayor, me voy para la izquierda
+
+        /*
+         * comparo la llave del padre con la del nuevo nodo
+         * - result es negativo: parent es menor, entonces newNode va a la derecha
+         * - result es 0: Son iguales, se descarta newNode
+         * - result es positivo: parent es mayor, entonces newNode va a la izquierda
+         */
+        int result = parent.get_key().compareTo(newNode.get_key());
+
+        if (result > 0){ //parent es mayor, me voy para la izquierda
 
             if (parent.get_leftChild() == null){ //Lo inserto acá
                 newNode.setIsRightChild(false);
@@ -44,7 +53,7 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements IBinaryTree
                 internalInsert(parent.get_leftChild(), newNode);
             }   
 
-        } else if (parent.get_key().compareTo(newNode.get_key()) < 0){ //parent es menor, me voy para la derecha
+        } else if (result < 0){ //parent es menor, me voy para la derecha
 
             if (parent.get_rightChild() == null){ //Lo inserto acá
                 newNode.setIsRightChild(true);
@@ -70,10 +79,22 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements IBinaryTree
     }
 
     private V internalSearch(BinaryTreeNode<K, V> parent, K keyToFind){
+
+        
+
         if (parent != null){
-            if (parent.get_key().compareTo(keyToFind) > 0){ //Seguir buscando en la izquierda
+
+            /*
+            * comparo la llave del padre con la del nuevo nodo
+            * - result es negativo: parent es menor, entonces newNode va a la derecha
+            * - result es 0: Son iguales, se descarta newNode
+            * - result es positivo: parent es mayor, entonces newNode va a la izquierda
+            */
+            int result = parent.get_key().compareTo(keyToFind);
+
+            if (result > 0){ //Seguir buscando en la izquierda
                 return internalSearch(parent.get_leftChild(), keyToFind);
-            } else if (parent.get_key().compareTo(keyToFind) < 0) {//seguir buscando en la derecha
+            } else if (result < 0) {//seguir buscando en la derecha
                 return internalSearch(parent.get_rightChild(), keyToFind);
             } else { //es 0, por lo tanto son iguales y este es el valor buscado
                 return parent.get_value();

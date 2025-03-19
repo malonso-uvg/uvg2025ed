@@ -6,6 +6,24 @@ import org.junit.Test;
 
 public class BinarySearchTreeTest {
     @Test
+    public void testInOrderToConsole() {
+        BinarySearchTree<Integer, String> arbolDePrueba = new BinarySearchTree<>();
+        arbolDePrueba.insert(20, "Veinte");
+        arbolDePrueba.insert(15, "Quince");
+        arbolDePrueba.insert(35, "Treinta y cinco");
+        arbolDePrueba.insert(50, "Cincuenta");
+        arbolDePrueba.insert(5, "Cinco");
+        arbolDePrueba.insert(18, "Dieciocho");
+        arbolDePrueba.insert(30, "Treinta");
+
+        ElementsToConsole<Integer, String> misElementos = new ElementsToConsole<>();
+        arbolDePrueba.InOrder(misElementos);
+
+        
+        
+    }
+
+    @Test
     public void testInOrder() {
         BinarySearchTree<Integer, String> arbolDePrueba = new BinarySearchTree<>();
         arbolDePrueba.insert(20, "Veinte");
