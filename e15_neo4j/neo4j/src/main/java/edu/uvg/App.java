@@ -21,11 +21,20 @@ public class App
 		
 		try ( EmbeddedNeo4j db = new EmbeddedNeo4j( boltURL, username, password ) )
         {
+			System.out.println("\r\n**** Listado de actores ****");
 		 	LinkedList<String> myactors = db.getActors();
 		 	
 		 	for (int i = 0; i < myactors.size(); i++) {
 		 		System.out.println(myactors.get(i));
 		 	}
+
+			 System.out.println("\r\n**** Listado de peliculas ****");
+
+             LinkedList<String> myMovies = db.getMovies();
+
+             for (String movie: myMovies){
+                System.out.println(movie);
+             }
         	
         } catch (Exception e) {
 			// TODO Auto-generated catch block

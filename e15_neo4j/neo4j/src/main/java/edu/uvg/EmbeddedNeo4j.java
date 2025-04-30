@@ -37,25 +37,16 @@ public class EmbeddedNeo4j implements AutoCloseable{
         driver.close();
     }
 
-    public void printGreeting( final String message )
-    {
-        try ( Session session = driver.session() )
-        {
-            String greeting = session.writeTransaction( new TransactionWork<String>()
-            {
-                @Override
-                public String execute( Transaction tx )
-                {
-                    Result result = tx.run( "CREATE (a:Greeting) " +
-                                                     "SET a.message = $message " +
-                                                     "RETURN a.message + ', from node ' + id(a)",
-                            parameters( "message", message ) );
-                    return result.single().get( 0 ).asString();
-                }
-            } );
-            System.out.println( greeting );
+    public LinkedList<String> getMovies(){
+        
+        try ( Session session = driver.session() ) {
+           LinkedList<String> movies = (new MoviesQuery()).execute(session.beginTransaction());
+           return movies;
+        } catch (Exception e) {
+           System.out.println(e.getMessage());
+           return null;
         }
-    }
+   }
     
     public LinkedList<String> getActors()
     {
