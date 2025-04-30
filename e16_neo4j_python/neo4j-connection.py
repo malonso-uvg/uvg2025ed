@@ -15,5 +15,14 @@ def run_query(query):
 query = "MATCH (pelicula:Movie) RETURN pelicula.title AS title"
 result = run_query(query)
 
+print("**** PELICULAS ****")
 for record in result:
     print(record["title"])
+
+query = "MATCH (n:Person) RETURN n.name"
+actors = run_query(query)
+
+print("**** ACTORES ****")
+
+for record in actors:
+    print(record["n.name"])
